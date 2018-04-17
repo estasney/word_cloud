@@ -97,6 +97,8 @@ class colormap_color_func(object):
 
     """
     def __init__(self, colormap):
+        import matplotlib
+        matplotlib.use("Agg")
         import matplotlib.pyplot as plt
         self.colormap = plt.cm.get_cmap(colormap)
 
@@ -284,6 +286,7 @@ class WordCloud(object):
         if color_func is None and colormap is None:
             # we need a color map
             import matplotlib
+            matplotlib.use("Agg")
             version = matplotlib.__version__
             if version[0] < "2" and version[2] < "5":
                 colormap = "hsv"
